@@ -1,0 +1,31 @@
+/* Parent container for the image */
+.ImgHover {
+  position: relative; /* Makes sure the pseudo-element is positioned relative to the image */
+  display: inline-block; /* Ensures the image and pseudo-element align correctly */
+  transition: transform 0.3s ease; /* Smooth animation for the image */
+}
+
+.ImgHover::before {
+  content: ""; /* Creates the backdrop */
+  position: absolute; /* Positions the pseudo-element relative to the parent */
+  top: 50%;
+  left: 50%;
+  width: 0; /* Initially, no width */
+  height: 0; /* Initially, no height */
+  background: rgba(0, 0, 0, 0.2); /* Semi-transparent black backdrop */
+  border-radius: 50%; /* Creates a circular effect */
+  transform: translate(-50%, -50%) scale(0); /* Centers the pseudo-element and hides it */
+  transition: all 0.3s ease; /* Smooth animation for size and scale */
+  z-index: -1; /* Places the pseudo-element behind the image */
+}
+
+.ImgHover:hover::before {
+  width: 115%; /* Expands the backdrop */
+  height: 115%; /* Expands the backdrop */
+  transform: translate(-50%, -50%) scale(1); /* Smoothly reveals the backdrop */
+  background: rgba(0, 0, 0, 0.3); /* Optional: Darker on hover */
+}
+
+.ImgHover:hover {
+  transform: translateY(-0.5rem); /* Slightly lifts the image on hover */
+}
